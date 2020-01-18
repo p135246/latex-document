@@ -1,0 +1,189 @@
+% ***************
+% DOCUMENT CLASS
+% ***************
+
+\documentclass[11pt,
+a4paper,
+oneside, 
+% 	One sided document. Change to twoside for print version
+%openright, 
+% 	Chapters begin on the right
+%cleardoublepage=plain,
+% 	Add page number on empty pages when cleardoublepage is executed
+%numbers=noenddot, 
+%	No dot after the section number
+%listof=totoc
+%	Insert list of figures to toc
+%final
+draft
+%	draft version shows black boxes at hnox overflow
+]{
+scrartcl
+%crbook
+%crletter
+}
+
+% *****************
+% TABLE OF CONTENTS
+% *****************
+
+% ********
+% SUBFILES
+% ********
+
+\usepackage{subfiles}
+
+\providecommand{\MainFolder}{.}
+%	The directory of the main file Text.tex
+\providecommand{\MyPackagesFolder}{\MainFolder/latex-packages}
+%	The directory with LateX packages
+\providecommand{\SubfilesFolder}{\MainFolder/subfiles}
+%	The directory with subfiles
+\providecommand{\GraphicsFolder}{\MainFolder/graphics}
+%	The directory with graphics
+\providecommand{\BibliographyFile}{\MainFolder/bibliography/bibliography.bib}
+%	The bibliography file
+
+
+% *****
+% FONTS
+% *****
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% Babel options
+
+\usepackage[ngerman,english]{babel}
+\usepackage{csquotes}
+%	To correct babel error about quotes
+
+% Selection of fonts (uncomment precisely one): 
+
+%\usepackage{newpxtext,newpxmath} %Palatino
+%\usepackage{libertine} %Libertine
+%\usepackage[libertine]{newtxmath}
+%\usepackage[utopia]{mathdesign} %Utopia
+%\usepackage{fouriernc} %New Century Schoolbook
+%\usepackage{kpfonts} %KPFonts
+%\usepackage[garamond]{mathdesign}
+%\usepackage[charter]{mathdesign}
+\usepackage{lmodern} % Latin Modern
+%\usepackage{charter}
+%\usepackage[utopia]{mathdesign}
+%\usepackage{gfsartemisia-euler}
+%\setkomafont{disposition}{\normalfont}
+% Use the same font for headings as in the normal text
+
+% ************
+% BIBLIOGRAPHY
+% ************
+
+\usepackage[
+style=alphabetic, %
+%citestyle=authoryear, %
+giveninits=true,
+%	Do not display full given names but just initials 
+backend=biber
+%	Using newer biber instead of older bibtex
+]{biblatex}
+
+\addbibresource{\BibliographyFile}
+
+\DefineBibliographyExtras{english}{\let\finalandcomma=\empty}
+%	Removes the Oxford comma in the list of authors.
+
+
+\usepackage{microtype} 
+% Microtype package - Subliminal refinements towards typographical perfection.
+% Should improve the typography when pdftex is used.
+% In our document, it removes hbox overflow in bibliography.
+
+
+% ********
+% PACKAGES
+% ********
+
+\usepackage{hyperref}
+%	Rather listed separatly because it causes problems. 
+
+\usepackage{setspace}
+%	Line spacing
+
+\usepackage{\MyPackagesFolder/my-math-external-packages}
+%	List of common external packages
+
+\usepackage{\MyPackagesFolder/my-tools}
+%	Some useful commands
+%	Red, Blue, ...
+%	Requires stackengine because of reallywidehat
+
+\usepackage{\MyPackagesFolder/my-math-1}
+%	Various mathematical abbreviations
+
+\usepackage{\MyPackagesFolder/my-lists}
+%	ClaimList, ProofList, RemarkList, ExampleList, PlainList, EqnList, ...
+%	Requires \usepackage{enumitem}
+
+\usepackage{\MyPackagesFolder/my-amsthm}
+%	Theorem, Definition, Remark, ... 
+%	Requires \usepackage{amsthm}
+
+\usepackage{\MyPackagesFolder/my-todo}
+
+\pgfplotsset{compat=1.6}
+%	Get rid of the TiKz version warning
+
+%
+% **************
+% BEGIN DOCUMENT
+% **************
+%
+\begin{document}
+%
+% **********
+% PRINT TODO
+% **********
+%
+\ToDoList
+\clearpage
+%
+% ***********
+% PRINT TITLE
+% ***********
+%
+\title{<++>}
+\author{<++>\thanks{\textit{E-mail address:} \href{mailto:<++>}{<++>}}}
+\maketitle
+%
+\begin{abstract}
+\end{abstract}
+%
+% ********
+% PINT TOC
+% ********
+%
+\tableofcontents
+%
+% *************
+% PRINT CONTENT
+% *************
+%
+\section{Section}
+%
+\subfile{\SubfilesFolder/subfile.tex}
+%
+% ******************
+% PRINT BIBLIOGRAPHY
+% ******************
+%
+%\addtocontents{toc}{\protect\vspace{12pt}}%
+%\addcontentsline{toc}{section}{Bibliography}
+\printbibliography
+%
+\end{document}
+%
+% ************
+% END DOCUMENT
+% ************
+%
