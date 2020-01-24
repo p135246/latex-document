@@ -18,9 +18,10 @@ oneside,
 draft
 %	draft version shows black boxes at hnox overflow
 ]{
-scrartcl
-%crbook
-%crletter
+scrreprt
+%scrartcl
+%scrbook
+%scrletter
 }
 
 % *****************
@@ -93,22 +94,21 @@ backend=biber
 \DefineBibliographyExtras{english}{\let\finalandcomma=\empty}
 %	Removes the Oxford comma in the list of authors.
 
+% **************
+% EXTRA PACKAGES
+% **************
 
-\usepackage{microtype} 
-% Microtype package - Subliminal refinements towards typographical perfection.
-% Should improve the typography when pdftex is used.
-% In our document, it removes hbox overflow in bibliography.
-
-
-% ********
-% PACKAGES
-% ********
-
+\usepackage{microtype}
+%       Should improve the typography when pdftex is used. It removes hbox overflow in bibliography.
 \usepackage{hyperref}
-%	Rather listed separatly because it causes problems. 
-
+%       Hyperlinks. Sometimes causes problems. 
 \usepackage{setspace}
-%	Line spacing
+%       Line spacing
+
+
+% ***********
+% MY PACKAGES
+% ***********
 
 \usepackage{\MyPackagesFolder/my-math-external-packages}
 %	List of common external packages
@@ -131,8 +131,14 @@ backend=biber
 
 \usepackage{\MyPackagesFolder/my-todo}
 
+% **********************
+% EXTRA DOCUMENT SETTING
+% **********************
+
 \pgfplotsset{compat=1.6}
-%	Get rid of the TiKz version warning
+%       Get rid of the TiKz version warning
+\renewcommand{\baselinestretch}{1.2}
+%       Set baslinestretch.
 
 %
 % **************
