@@ -1,0 +1,3 @@
+[submodule "latex-packages"]
+	path = latex-packages
+	url = https://github.com/p135246/latex-packages
