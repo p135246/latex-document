@@ -2,7 +2,7 @@
 % DOCUMENT CLASS
 % ***************
 
-\documentclass[11pt,
+\documentclass[10pt,
 a4paper,
 oneside, 
 % 	One sided document. Change to twoside for print version
@@ -16,10 +16,10 @@ oneside,
 %	Insert list of figures to toc
 %final
 draft
-%	draft version shows black boxes at hnox overflow
+%	draft version shows black boxes at hbox overflow
 ]
-{scrreprt}
-%{scrartcl}
+%{scrreprt}
+{scrartcl}
 %{scrbook}
 %{scrletter}
 
@@ -51,10 +51,12 @@ draft
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
+% 	Standard Linux configuration.
 
 % Babel options
 
 \usepackage[ngerman,english]{babel}
+% 	Load languages
 \usepackage{csquotes}
 %	To correct babel error about quotes
 
@@ -72,8 +74,9 @@ draft
 %\usepackage{charter}
 %\usepackage[utopia]{mathdesign}
 %\usepackage{gfsartemisia-euler}
+
 %\setkomafont{disposition}{\normalfont}
-% Use the same font for headings as in the normal text
+% 	Use the same font for headings as in the normal text
 
 % ************
 % BIBLIOGRAPHY
@@ -84,11 +87,15 @@ style=alphabetic, %
 %citestyle=authoryear, %
 giveninits=true,
 %	Do not display full given names but just initials 
-backend=biber
+backend=biber,
 %	Using newer biber instead of older bibtex
+maxcitenames=5,
+maxbibnames=5
+% 	Display more authors
 ]{biblatex}
 
 \addbibresource{\BibliographyFile}
+% 	Load bibliography
 
 \DefineBibliographyExtras{english}{\let\finalandcomma=\empty}
 %	Removes the Oxford comma in the list of authors.
@@ -129,15 +136,27 @@ backend=biber
 %	Requires \usepackage{amsthm}
 
 \usepackage{\MyPackagesFolder/my-todo}
+% 	My ´Todo ecosystem.
+
+% **********************
+% DEBUGGING
+% **********************
+
+%\usepackage{refcheck}
+% 	Display equation names and unused labels.
 
 % **********************
 % EXTRA DOCUMENT SETTING
 % **********************
 
 \pgfplotsset{compat=1.6}
-%       Get rid of the TiKz version warning
-\renewcommand{\baselinestretch}{1.2}
+%       Set the version and get rid of the TiKz warning
+%\renewcommand{\baselinestretch}{1.2}
 %       Set baslinestretch.
+\setlength{\parindent}{0em}
+% 	Paragraph indentation
+\setlength{\parskip}{1ex}
+% 	Paragraph skip
 
 %
 % **************
@@ -157,8 +176,8 @@ backend=biber
 % PRINT TITLE
 % ***********
 %
-\title{<++>}
-\author{<++>\thanks{\textit{E-mail address:} \href{mailto:<++>}{<++>}}}
+\title{Title}
+\author{Pavel H\'ajek\thanks{\textit{E-mail:} \href{mailto:pavel.hajek@uni-hamburg.de}{pavel.hajek@uni-hamburg.de}}\\ University of Hamburg}
 \maketitle
 %
 \begin{abstract}
@@ -183,7 +202,8 @@ backend=biber
 % ******************
 %
 %\addtocontents{toc}{\protect\vspace{12pt}}%
-%\addcontentsline{toc}{section}{Bibliography}
+% 	Add additional space to TOC.
+\addcontentsline{toc}{section}{References}
 \printbibliography
 %
 \end{document}
